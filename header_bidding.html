@@ -32,19 +32,15 @@
   var PREBID_TIMEOUT = 2000;
 
   var adUnits = [{
-      code: 'div-gpt-ad-1524466840885-0',
-      mediaTypes: {
-          banner: {
-              sizes: [[300, 250]],
-          }
-      },
-      bids: [{
-          bidder: 'audienceNetwork',
-          params: {
-             placementId: '853396028140757_1013057658841259'
-          }
-      }]
-  }];
+    code: 'div-gpt-ad-1524466840885-0',
+    sizes: [[300, 250]],
+    bids: [{
+      bidder: 'audienceNetwork',
+      params: {
+        placementId: '853396028140757_1013057658841259',
+      }
+    }]
+  },];
 
   pbjs.bidderSettings = {
        audienceNetwork: {
