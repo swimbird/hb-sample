@@ -46,10 +46,6 @@
       }]
   }];
 
-  pbjs.que.push(function() {
-    pbjs.addAdUnits(adUnits);
-  });
-
   pbjs.bidderSettings = {
        audienceNetwork: {
             adserverTargeting: [
@@ -74,7 +70,11 @@
                   },
               ],
         },
-	};
+  };
+
+  pbjs.que.push(function() {
+    pbjs.addAdUnits(adUnits);
+  });
 </script>
 
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
