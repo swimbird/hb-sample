@@ -21,7 +21,74 @@
     min-height: 2000px;
     padding-top: 70px;
   }
-  </style>
+</style>
+
+
+
+<!-- Prebid Config Section START -->
+<!-- Make sure this is inserted before your GPT tag -->
+<script src="./js/prebid_20180423083008.js"></script>
+<script>
+  var PREBID_TIMEOUT = 2000;
+
+  var adUnits = [{
+      code: 'div-gpt-ad-1524466840885-0',
+      mediaTypes: {
+          banner: {
+              sizes: [[300, 250]],
+          }
+      },
+      bids: [{
+          bidder: 'audienceNetwork',
+          params: {
+             placementId: '853396028140757_1013057658841259'
+          }
+      }]
+  }];
+
+
+  pbjs.bidderSettings = {
+       audienceNetwork: {
+            adserverTargeting: [
+                  {
+                      key: "fb_bidid",
+                      val: function (bidResponse) {
+                          // make the bidId available for targeting if required
+                          return bidResponse.fb_bidid;
+                      }
+                  },
+                  {
+                      key: "hb_bidder",
+                      val: function (bidResponse) {
+                          return bidResponse.bidderCode;
+                      }
+                  },
+                  {
+                    key: "hb_pb",
+                    val: function(bidResponse) {
+                      return bidResponse.pbMg;
+                    }
+                  },
+              ],
+        },
+	};
+</script>
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/50298334/header_bidding', [[300, 250], [320, 50]], 'div-gpt-ad-1524466840885-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+
 </head>
 <body>
 
@@ -45,6 +112,13 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo bibendum turpis, eu sodales elit fermentum ut. Etiam lacinia eleifend dui id varius. Suspendisse porta euismod erat, non ornare justo cursus eu. In hac habitasse platea dictumst. Ut fringilla urna ut eros suscipit facilisis. Morbi vitae sem dui. Morbi facilisis gravida finibus. </p>
     </div>
   </div>
+
+<!-- /50298334/header_bidding -->
+<div id='div-gpt-ad-1524466840885-0'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524466840885-0'); });
+</script>
+</div>
 
   <div class="card">
     <div class="card-block">
