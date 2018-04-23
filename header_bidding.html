@@ -27,64 +27,106 @@
 
 <!-- Prebid Config Section START -->
 <!-- Make sure this is inserted before your GPT tag -->
-<script src="./js/prebid_20180423083008.js"></script>
 <script>
-  var PREBID_TIMEOUT = 2000;
+var PREBID_TIMEOUT = 2000;
 
-  var adUnits = [{
-    code: 'div-gpt-ad-1524466840885-0',
-    sizes: [[300, 250]],
-    bids: [{
-      bidder: 'audienceNetwork',
-      params: {
-        placementId: '853396028140757_1013057658841259',
-      }
-    }]
-  },];
+var adUnits = [{
+  code: 'div-gpt-ad-1524466840885-0',
+  mediaTypes: {
+    banner: {
+      sizes: [[300, 250]]
+    }
+  },
+  bids: [{
+    bidder: 'audienceNetwork',
+    params: {
+      placementId: '853396028140757_1013057658841259',
+    }
+  }]
+}];
 
-  pbjs.bidderSettings = {
-       audienceNetwork: {
-            adserverTargeting: [
-                  {
-                      key: "fb_bidid",
-                      val: function (bidResponse) {
-                          // make the bidId available for targeting if required
-                          return bidResponse.fb_bidid;
-                      }
-                  },
-                  {
-                      key: "hb_bidder",
-                      val: function (bidResponse) {
-                          return bidResponse.bidderCode;
-                      }
-                  },
-                  {
-                    key: "hb_pb",
-                    val: function(bidResponse) {
-                      return bidResponse.pbMg;
-                    }
-                  },
-              ],
-        },
-  };
+var pbjs = pbjs || {};
+pbjs.que = pbjs.que || [];
 
-  pbjs.que.push(function() {
-    pbjs.onEvent('addAdUnits',adUnits);
+pbjs.bidderSettings = {
+  audienceNetwork: {
+    adserverTargeting: [
+      {
+        key: "fb_bidid",
+        val: function (bidResponse) {
+          // make the bidId available for targeting if required
+          return bidResponse.fb_bidid;
+        }
+      },
+      {
+        key: "hb_bidder",
+        val: function (bidResponse) {
+          return bidResponse.bidderCode;
+        }
+      },
+      {
+        key: "hb_pb",
+        val: function(bidResponse) {
+          return bidResponse.pbMg;
+        }
+      },
+    ],
+  },
+};
+</script>
+
+<script src="./js/prebid_20180423083008.js" async></script>
+
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+
+googletag.cmd.push(function() {
+  googletag.pubads().disableInitialLoad();
+});
+
+pbjs.que.push(function() {
+  pbjs.addAdUnits(adUnits);
+  pbjs.requestBids({
+    bidsBackHandler: sendAdserverRequest
   });
-</script>
+});
 
-<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-<script>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
-</script>
-
-<script>
+function sendAdserverRequest() {
+  if (pbjs.adserverRequestSent) return;
+  pbjs.adserverRequestSent = true;
   googletag.cmd.push(function() {
-    googletag.defineSlot('/50298334/header_bidding', [[300, 250], [320, 50]], 'div-gpt-ad-1524466840885-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
+    pbjs.que.push(function() {
+      pbjs.setTargetingForGPTAsync();
+      googletag.pubads().refresh();
+    });
   });
+}
+
+setTimeout(function() {
+  sendAdserverRequest();
+}, PREBID_TIMEOUT);
+</script>
+
+<script>
+(function () {
+  var gads = document.createElement('script');
+  gads.async = true;
+  gads.type = 'text/javascript';
+  var useSSL = 'https:' == document.location.protocol;
+  gads.src = (useSSL ? 'https:' : 'http:') +
+  '//www.googletagservices.com/tag/js/gpt.js';
+  var node = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(gads, node);
+})();
+  </script>
+
+<script>
+googletag.cmd.push(function() {
+  googletag.defineSlot('/50298334/header_bidding', [[300, 250], [320, 50]], 'div-gpt-ad-1524466840885-0').addService(googletag.pubads());
+  googletag.pubads().enableSingleRequest();
+  googletag.enableServices();
+});
 </script>
 
 
