@@ -104,7 +104,7 @@ function sendAdserverRequest() {
   googletag.cmd.push(function() {
     pbjs.que.push(function() {
       pbjs.setTargetingForGPTAsync();
-      googletag.pubads().refresh();
+      googletag.pubads().refresh([topSlot, middleSlot]);
     });
   });
 }
@@ -128,9 +128,11 @@ setTimeout(function() {
   </script>
 
 <script>
+
+var topSlot, middleSlot;
 googletag.cmd.push(function() {
-  googletag.defineSlot('/50298334/header_bidding_middle', [[300, 250], [320, 50]], 'div-gpt-ad-1524637096418-0').addService(googletag.pubads());
-  googletag.defineSlot('/50298334/header_bidding', [[300, 250], [320, 50]], 'div-gpt-ad-1524637096418-1').addService(googletag.pubads());
+  topSlot = googletag.defineSlot('/50298334/header_bidding', [[300, 250], [320, 50]], 'div-gpt-ad-1524637096418-1').addService(googletag.pubads());
+  middleSlot = googletag.defineSlot('/50298334/header_bidding_middle', [[300, 250], [320, 50]], 'div-gpt-ad-1524637096418-0').addService(googletag.pubads());
   googletag.pubads().enableSingleRequest();
   googletag.enableServices();
 });
@@ -162,7 +164,7 @@ googletag.cmd.push(function() {
   </div>
 
 <!-- /50298334/header_bidding -->
-<div id='div-gpt-ad-1524637096418-1'>
+<div id='div-gpt-ad-1524637096418-1' style="text-align: center;">
 <script>
 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524637096418-1'); });
 </script>
@@ -190,7 +192,7 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524637096418-1');
   </div>
 
 <!-- /50298334/header_bidding_middle -->
-<div id='div-gpt-ad-1524637096418-0'>
+<div id='div-gpt-ad-1524637096418-0' style="text-align: center;">
 <script>
 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524637096418-0'); });
 </script>
