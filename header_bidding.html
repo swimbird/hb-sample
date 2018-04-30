@@ -49,6 +49,16 @@ var adUnits = [{
       placementId: '853396028140757_1014196092060749',
     }
   }]
+},
+{
+  code: 'div-gpt-ad-1525067019557-0',
+  sizes: [[300, 250]],
+  bids: [{
+    bidder: 'audienceNetwork',
+    params: {
+      placementId: '853396028140757_1016855115128180',
+    }
+  }]
 }];
 
 var pbjs = pbjs || {};
@@ -104,7 +114,7 @@ function sendAdserverRequest() {
   googletag.cmd.push(function() {
     pbjs.que.push(function() {
       pbjs.setTargetingForGPTAsync();
-      googletag.pubads().refresh([topSlot, middleSlot]);
+      googletag.pubads().refresh([topSlot, middleSlot, bottomSlot]);
     });
   });
 }
@@ -129,10 +139,11 @@ setTimeout(function() {
 
 <script>
 
-var topSlot, middleSlot;
+var topSlot, middleSlot, bottomSlot;
 googletag.cmd.push(function() {
   topSlot = googletag.defineSlot('/50298334/header_bidding', [[300, 250]], 'div-gpt-ad-1524637096418-1').addService(googletag.pubads());
   middleSlot = googletag.defineSlot('/50298334/header_bidding_middle', [[300, 250]], 'div-gpt-ad-1524637096418-0').addService(googletag.pubads());
+  bottomSlot = googletag.defineSlot('/50298334/header_bidding_bottom', [300, 250], 'div-gpt-ad-1525067019557-0').addService(googletag.pubads());
   googletag.enableServices();
 });
 </script>
@@ -224,6 +235,41 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524637096418-0');
       <p>Cras in quam vulputate risus lobortis rhoncus. Nulla malesuada nunc id orci mattis, sed ornare elit ornare. Praesent consectetur accumsan ullamcorper. Cras dignissim, neque sit amet porttitor blandit, nisi turpis ultrices est, nec mollis ante sapien eget leo. Duis id sodales ligula. In finibus, nibh ut pharetra facilisis, dolor nisl laoreet risus, ut pharetra est velit ac mi. Nunc laoreet est a lobortis mattis. </p>
     </div>
   </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Aliquam aliquet nunc quam</h2>
+      <p>ultricies eleifend ante luctus eu. Duis varius tempor auctor. Nulla scelerisque erat metus, facilisis mattis tortor rutrum eget. Nam imperdiet, ipsum ut imperdiet venenatis, nisi enim laoreet ante, vitae tempus diam urna sed lorem. Fusce non ullamcorper tellus, eget finibus nunc.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Nam et quam arcu</h2>
+      <p>Nunc faucibus sit amet sem lacinia volutpat. Pellentesque feugiat elementum nulla, vitae pharetra urna tincidunt nec. Nulla quis nunc ut libero lacinia suscipit. Etiam luctus egestas purus vel venenatis. Donec efficitur eros mauris, a molestie ligula porta egestas. Nulla suscipit, risus non fringilla semper, dolor odio vestibulum ante, id dapibus neque sem et nisl. Donec sit amet justo eleifend, dictum ipsum nec, finibus lorem. Quisque vel odio risus.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Suspendisse potenti</h2>
+      <p>Morbi felis ipsum, accumsan eu nunc sed, volutpat tempor ante. In porttitor tortor purus, id lacinia tellus maximus a. Duis justo nibh, dignissim id lorem et, volutpat malesuada odio. Nunc vel volutpat magna. Suspendisse finibus sodales gravida. Integer tincidunt erat eu volutpat posuere. Vivamus maximus accumsan lacus, a rutrum ante facilisis quis. Nulla nec efficitur leo. Quisque ut mauris congue, semper lectus ac, placerat magna. Duis sit amet nunc convallis, rhoncus justo vel, faucibus nulla.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Sed bibendum malesuada semper</h2>
+      <p>Cras in quam vulputate risus lobortis rhoncus. Nulla malesuada nunc id orci mattis, sed ornare elit ornare. Praesent consectetur accumsan ullamcorper. Cras dignissim, neque sit amet porttitor blandit, nisi turpis ultrices est, nec mollis ante sapien eget leo. Duis id sodales ligula. In finibus, nibh ut pharetra facilisis, dolor nisl laoreet risus, ut pharetra est velit ac mi. Nunc laoreet est a lobortis mattis. </p>
+    </div>
+  </div>
+
+<!-- /50298334/header_bidding_bottom -->
+<div id='div-gpt-ad-1525067019557-0' style='height:250px; width:300px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1525067019557-0'); });
+</script>
+</div>
 
 </div><!-- /container -->
 
