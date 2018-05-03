@@ -107,7 +107,7 @@ function sendAdserverRequest() {
   googletag.cmd.push(function() {
     pbjs.que.push(function() {
       pbjs.setTargetingForGPTAsync();
-      googletag.pubads().refresh([topSlot, middleSlot, bottomSlot]);
+      googletag.pubads().refresh([topSlot, middleSlot]);
     });
   });
 }
@@ -271,6 +271,30 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1525067019557-0');
 </div>
 
 </div><!-- /container -->
+
+<script>
+  // Refresh the bottom slot when it is about to come into view.
+  var refreshed = false;
+
+  // Value of scrollY at which the ad is about to come into view.
+  var adAlmostVisibleScrollValue = 1500;
+
+  // Warning: This is a sample implementation. Listening to onscroll without 
+  // any throttling might not be very efficient.
+  var listener = function() {
+    if (window.scrollY >= adAlmostVisibleScrollValue && !refreshed) {
+      googletag.cmd.push(function() {
+        googletag.pubads().refresh([bottomSlot]);
+      });
+      // Refresh the ad only once.
+      refreshed = true;
+
+      // Remove the listener now.
+      window.removeEventListener('scroll', listener);
+    }
+  }
+  window.addEventListener('scroll', listener);
+</script>
 
 </body>
 </html>
