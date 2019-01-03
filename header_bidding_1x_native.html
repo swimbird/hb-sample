@@ -1,0 +1,324 @@
+<html>
+<head>
+  <title>Katsu HeaderBidding Sample</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <style type="text/css">
+  body {
+    min-height: 2000px;
+    padding-top: 70px;
+  }
+</style>
+
+
+
+<!-- Prebid Config Section START -->
+<!-- Make sure this is inserted before your GPT tag -->
+<script>
+var PREBID_TIMEOUT = 1500;
+
+var sizes = [
+  [300, 250]
+];
+
+var adUnits = [
+{
+  code: 'div-gpt-ad-1524637096418-1',
+  mediaTypes: {
+    banner: {
+      sizes: sizes
+    }
+  },
+  bids: [{
+    bidder: 'audienceNetwork',
+    params: {
+      placementId: '853396028140757_1202663096547380',
+      testmode: false,
+      format: 'native'
+    }
+  }]
+},
+{
+  code: 'div-gpt-ad-1524637096418-0',
+  mediaTypes: {
+    banner: {
+      sizes: sizes
+    }
+  },
+  bids: [{
+    bidder: 'audienceNetwork',
+    params: {
+      placementId: '853396028140757_1202664243213932',
+      testmode: false,
+      format: 'native'
+    }
+  }]
+},
+{
+  code: 'div-gpt-ad-1525067019557-0',
+  mediaTypes: {
+    banner: {
+      sizes: sizes
+    }
+  },
+  bids: [{
+    bidder: 'audienceNetwork',
+    params: {
+      placementId: '853396028140757_1202665219880501',
+      testmode: false,
+      format: 'native'
+    }
+  }]
+}
+];
+
+var pbjs = pbjs || {};
+pbjs.que = pbjs.que || [];
+
+pbjs.bidderSettings = {
+  audienceNetwork: {
+    adserverTargeting: [
+      {
+        key: "fb_bidid",
+        val: function (bidResponse) {
+          // make the bidId available for targeting if required
+          return bidResponse.fb_bidid;
+        }
+      },
+      {
+        key: "hb_bidder",
+        val: function (bidResponse) {
+          return bidResponse.bidderCode;
+        }
+      },
+      {
+        key: "hb_pb",
+        val: function(bidResponse) {
+          return bidResponse.pbMg;
+        }
+      },
+    ],
+  },
+};
+</script>
+
+<script src="./js/prebid1.36.0.js" async></script>
+
+<script>
+pbjs.que.push(function() {
+  pbjs.addAdUnits(adUnits);
+  pbjs.requestBids({
+    bidsBackHandler: sendAdserverRequest
+  });
+});
+
+function sendAdserverRequest() {
+  if (pbjs.adserverRequestSent) return;
+  pbjs.adserverRequestSent = true;
+  googletag.cmd.push(function() {
+    pbjs.que.push(function() {
+      pbjs.setTargetingForGPTAsync();
+      googletag.pubads().refresh([topSlot, middleSlot]);
+    });
+  });
+}
+
+setTimeout(function() {
+  sendAdserverRequest();
+}, PREBID_TIMEOUT);
+</script>
+
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+
+googletag.cmd.push(function() {
+  googletag.pubads().disableInitialLoad();
+});
+
+(function () {
+  var gads = document.createElement('script');
+  gads.async = true;
+  gads.type = 'text/javascript';
+  var useSSL = 'https:' == document.location.protocol;
+  gads.src = (useSSL ? 'https:' : 'http:') +
+  '//www.googletagservices.com/tag/js/gpt.js';
+  var node = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script>
+var topSlot, middleSlot, bottomSlot;
+googletag.cmd.push(function() {
+  topSlot = googletag.defineSlot('/50298334/header_bidding', [[300, 250]], 'div-gpt-ad-1524637096418-1').addService(googletag.pubads());
+  middleSlot = googletag.defineSlot('/50298334/header_bidding_middle', [[300, 250]], 'div-gpt-ad-1524637096418-0').addService(googletag.pubads());
+  bottomSlot = googletag.defineSlot('/50298334/header_bidding_bottom', [300, 250], 'div-gpt-ad-1525067019557-0').addService(googletag.pubads());
+  googletag.enableServices();
+});
+</script>
+
+
+</head>
+<body>
+
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./home.html">FAN HeaderBidding Sample</a>
+      </div>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+
+<!-- Main component for a primary marketing message or call to action -->
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="card">
+    <div class="card-block">
+      <h2>Lorem ipsum</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo bibendum turpis, eu sodales elit fermentum ut. Etiam lacinia eleifend dui id varius. Suspendisse porta euismod erat, non ornare justo cursus eu. In hac habitasse platea dictumst. Ut fringilla urna ut eros suscipit facilisis. Morbi vitae sem dui. Morbi facilisis gravida finibus. </p>
+    </div>
+  </div>
+
+<!-- /50298334/header_bidding -->
+<div id='div-gpt-ad-1524637096418-1' style="text-align: center;">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524637096418-1'); });
+</script>
+</div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Nam et quam arcu</h2>
+      <p>Nunc faucibus sit amet sem lacinia volutpat. Pellentesque feugiat elementum nulla, vitae pharetra urna tincidunt nec. Nulla quis nunc ut libero lacinia suscipit. Etiam luctus egestas purus vel venenatis. Donec efficitur eros mauris, a molestie ligula porta egestas. Nulla suscipit, risus non fringilla semper, dolor odio vestibulum ante, id dapibus neque sem et nisl. Donec sit amet justo eleifend, dictum ipsum nec, finibus lorem. Quisque vel odio risus.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Suspendisse potenti</h2>
+      <p>Morbi felis ipsum, accumsan eu nunc sed, volutpat tempor ante. In porttitor tortor purus, id lacinia tellus maximus a. Duis justo nibh, dignissim id lorem et, volutpat malesuada odio. Nunc vel volutpat magna. Suspendisse finibus sodales gravida. Integer tincidunt erat eu volutpat posuere. Vivamus maximus accumsan lacus, a rutrum ante facilisis quis. Nulla nec efficitur leo. Quisque ut mauris congue, semper lectus ac, placerat magna. Duis sit amet nunc convallis, rhoncus justo vel, faucibus nulla.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Sed bibendum malesuada semper</h2>
+      <p>Cras in quam vulputate risus lobortis rhoncus. Nulla malesuada nunc id orci mattis, sed ornare elit ornare. Praesent consectetur accumsan ullamcorper. Cras dignissim, neque sit amet porttitor blandit, nisi turpis ultrices est, nec mollis ante sapien eget leo. Duis id sodales ligula. In finibus, nibh ut pharetra facilisis, dolor nisl laoreet risus, ut pharetra est velit ac mi. Nunc laoreet est a lobortis mattis. </p>
+    </div>
+  </div>
+
+<!-- /50298334/header_bidding_middle -->
+<div id='div-gpt-ad-1524637096418-0' style="text-align: center;">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524637096418-0'); });
+</script>
+</div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Aliquam aliquet nunc quam</h2>
+      <p>ultricies eleifend ante luctus eu. Duis varius tempor auctor. Nulla scelerisque erat metus, facilisis mattis tortor rutrum eget. Nam imperdiet, ipsum ut imperdiet venenatis, nisi enim laoreet ante, vitae tempus diam urna sed lorem. Fusce non ullamcorper tellus, eget finibus nunc.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Nam et quam arcu</h2>
+      <p>Nunc faucibus sit amet sem lacinia volutpat. Pellentesque feugiat elementum nulla, vitae pharetra urna tincidunt nec. Nulla quis nunc ut libero lacinia suscipit. Etiam luctus egestas purus vel venenatis. Donec efficitur eros mauris, a molestie ligula porta egestas. Nulla suscipit, risus non fringilla semper, dolor odio vestibulum ante, id dapibus neque sem et nisl. Donec sit amet justo eleifend, dictum ipsum nec, finibus lorem. Quisque vel odio risus.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Suspendisse potenti</h2>
+      <p>Morbi felis ipsum, accumsan eu nunc sed, volutpat tempor ante. In porttitor tortor purus, id lacinia tellus maximus a. Duis justo nibh, dignissim id lorem et, volutpat malesuada odio. Nunc vel volutpat magna. Suspendisse finibus sodales gravida. Integer tincidunt erat eu volutpat posuere. Vivamus maximus accumsan lacus, a rutrum ante facilisis quis. Nulla nec efficitur leo. Quisque ut mauris congue, semper lectus ac, placerat magna. Duis sit amet nunc convallis, rhoncus justo vel, faucibus nulla.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Sed bibendum malesuada semper</h2>
+      <p>Cras in quam vulputate risus lobortis rhoncus. Nulla malesuada nunc id orci mattis, sed ornare elit ornare. Praesent consectetur accumsan ullamcorper. Cras dignissim, neque sit amet porttitor blandit, nisi turpis ultrices est, nec mollis ante sapien eget leo. Duis id sodales ligula. In finibus, nibh ut pharetra facilisis, dolor nisl laoreet risus, ut pharetra est velit ac mi. Nunc laoreet est a lobortis mattis. </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Aliquam aliquet nunc quam</h2>
+      <p>ultricies eleifend ante luctus eu. Duis varius tempor auctor. Nulla scelerisque erat metus, facilisis mattis tortor rutrum eget. Nam imperdiet, ipsum ut imperdiet venenatis, nisi enim laoreet ante, vitae tempus diam urna sed lorem. Fusce non ullamcorper tellus, eget finibus nunc.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Nam et quam arcu</h2>
+      <p>Nunc faucibus sit amet sem lacinia volutpat. Pellentesque feugiat elementum nulla, vitae pharetra urna tincidunt nec. Nulla quis nunc ut libero lacinia suscipit. Etiam luctus egestas purus vel venenatis. Donec efficitur eros mauris, a molestie ligula porta egestas. Nulla suscipit, risus non fringilla semper, dolor odio vestibulum ante, id dapibus neque sem et nisl. Donec sit amet justo eleifend, dictum ipsum nec, finibus lorem. Quisque vel odio risus.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Suspendisse potenti</h2>
+      <p>Morbi felis ipsum, accumsan eu nunc sed, volutpat tempor ante. In porttitor tortor purus, id lacinia tellus maximus a. Duis justo nibh, dignissim id lorem et, volutpat malesuada odio. Nunc vel volutpat magna. Suspendisse finibus sodales gravida. Integer tincidunt erat eu volutpat posuere. Vivamus maximus accumsan lacus, a rutrum ante facilisis quis. Nulla nec efficitur leo. Quisque ut mauris congue, semper lectus ac, placerat magna. Duis sit amet nunc convallis, rhoncus justo vel, faucibus nulla.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-block">
+      <h2>Sed bibendum malesuada semper</h2>
+      <p>Cras in quam vulputate risus lobortis rhoncus. Nulla malesuada nunc id orci mattis, sed ornare elit ornare. Praesent consectetur accumsan ullamcorper. Cras dignissim, neque sit amet porttitor blandit, nisi turpis ultrices est, nec mollis ante sapien eget leo. Duis id sodales ligula. In finibus, nibh ut pharetra facilisis, dolor nisl laoreet risus, ut pharetra est velit ac mi. Nunc laoreet est a lobortis mattis. </p>
+    </div>
+  </div>
+
+<!-- /50298334/header_bidding_bottom -->
+<div id='div-gpt-ad-1525067019557-0' style="text-align: center;">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1525067019557-0'); });
+</script>
+</div>
+
+</div><!-- /container -->
+
+<script>
+  // Refresh the bottom slot when it is about to come into view.
+  var refreshed = false;
+
+  // Value of scrollY at which the ad is about to come into view.
+  var adAlmostVisibleScrollValue = 2200;
+
+  // Warning: This is a sample implementation. Listening to onscroll without 
+  // any throttling might not be very efficient.
+  var listener = function() {
+    if (window.scrollY >= adAlmostVisibleScrollValue && !refreshed) {
+      googletag.cmd.push(function() {
+        googletag.pubads().refresh([bottomSlot]);
+      });
+      // Refresh the ad only once.
+      refreshed = true;
+
+      // Remove the listener now.
+      window.removeEventListener('scroll', listener);
+    }
+  }
+  window.addEventListener('scroll', listener);
+</script>
+
+</body>
+</html>
